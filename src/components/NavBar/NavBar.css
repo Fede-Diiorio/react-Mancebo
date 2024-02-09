@@ -1,0 +1,41 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.navbar {
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333; 
+    color: #3fdba7; 
+    padding: 10px 20px;
+    position: fixed;
+    width: 98%;
+    z-index: 1000;
+}
+
+
+.navbar h1 {
+    margin:0;
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    text-decoration: underline;
+}
+
+.nav-links a {
+    color: #3fdba7;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s; /* Transición suave al pasar el ratón */
+}
+
+.nav-links a:hover {
+    background-color: #f31a50; /* Cambia el color de fondo al pasar el ratón */
+}

@@ -1,0 +1,19 @@
+
+.item-detail-container {
+    padding: 20px;
+    border: 1px solid #17942a;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.highlighted-text {
+    display: inline-block;
+    background-color: #edcaca;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.item-image {
+    width: 200px;
+    margin: 10px;
+}

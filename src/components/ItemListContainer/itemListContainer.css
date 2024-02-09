@@ -1,0 +1,10 @@
+
+.loading-container {
+    text-align: center;
+    margin-top: 70px;
+}
+
+.loading-text {
+    font-family: 'Arial', sans-serif;
+    font-size: 28px;
+}
