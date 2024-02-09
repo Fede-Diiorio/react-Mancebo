@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
 import CartWidget from "../CartWidget/CartWidget";
-import './NavBar.css'; 
+import './NavBar.css';
 
-const NavBar = ({ cart }) => {
+const NavBar = () => {
     return (
         <nav className="navbar">
-            <h1>ComicShop</h1>
+            <Link to={'/'} className="nav-h1"><h1>ComicShop</h1></Link>
             <section className="nav-links">
                 <Link to={'/category/Dc Comics'}>Dc Comics</Link>
                 <Link to={'/category/Marvel Comics'}>Marvel Comics</Link>
             </section>
-            <CartWidget cart={cart} />
+            <CartWidget />
         </nav>
     );
 };

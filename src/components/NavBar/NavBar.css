@@ -1,4 +1,3 @@
-
 body {
     margin: 0;
     padding: 0;
@@ -11,8 +10,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333; 
-    color: #3fdba7; 
+    background-color: #333;
+    color: #3fdba7;
     padding: 10px 20px;
     position: fixed;
     width: 98%;
@@ -21,7 +20,7 @@ body {
 
 
 .navbar h1 {
-    margin:0;
+    margin: 0;
     font-family: 'Arial', sans-serif;
     font-size: 24px;
     text-decoration: underline;
@@ -33,9 +32,16 @@ body {
     margin: 0 15px;
     padding: 5px;
     border-radius: 5px;
-    transition: background-color 0.3s; /* Transición suave al pasar el ratón */
+    transition: background-color 0.3s;
+    /* Transición suave al pasar el ratón */
 }
 
 .nav-links a:hover {
-    background-color: #f31a50; /* Cambia el color de fondo al pasar el ratón */
+    background-color: #f31a50;
+    /* Cambia el color de fondo al pasar el ratón */
+}
+
+.navbar .nav-h1 {
+    color: #3fdba7;
+    text-decoration: none;
 }
