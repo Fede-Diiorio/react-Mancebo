@@ -1,37 +1,24 @@
-import { useState, useEffect } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
-import { db } from "../../services/firebase/firebaseConfig";
-import { doc, getDoc } from 'firebase/firestore'
 import styles from './ItemDetailContainer.module.css';
+import { useNotification } from "../../notification/NotificationService"
+import { useAsync } from "../../hooks/useAsync";
+import { getProductById } from "../../services/firebase/firestore/products";
+import { useTitle } from "../../hooks/useTitle"
 
 const ItemDetailContainer = () => {
-    const [product, setProduct] = useState(null);
-    const [loading, setLoading] = useState(true)
-
+    const { showNotification } = useNotification()
     const { productId } = useParams();
-
-    useEffect(() => {
-        setLoading(true)
-
-        const productDocument = doc(db, 'products', productId)
-
-        getDoc(productDocument)
-            .then(queryDocumentSnapshot => {
-                const fields = queryDocumentSnapshot.data()
-                const productAdapted = { id: queryDocumentSnapshot.id, ...fields }
-                setProduct(productAdapted)
-            })
-            .catch(error => {
-                showNotification('error', 'Hubo un error')
-            })
-            .finally(() => {
-                setLoading(false)
-            })
-    }, [productId])
+    const asyncFunction = () => getProductById(productId);
+    const { data: product, error, loading } = useAsync(asyncFunction, [productId])
+    useTitle(product, `${product.name}`, [product]);
 
     if (loading) {
         return <h1 className={styles.loadingText}>Cargando...</h1>
+    }
+
+    if (error) {
+        showNotification('error', 'El producto no existe')
     }
 
     return (

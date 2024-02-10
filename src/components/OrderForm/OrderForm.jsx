@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNotification } from '../../notification/NotificationService'
 import styles from './OrderForm.module.css';
+import { useTitle } from '../../hooks/useTitle'
 
 const OrderForm = ({ onCreate }) => {
 
@@ -9,6 +10,7 @@ const OrderForm = ({ onCreate }) => {
     const [email, setEmail] = useState('')
     const { showNotification } = useNotification()
     const [formSubmitted, setFormSubmitted] = useState(false)
+    useTitle(true, `ComicShop | Generar Orden`, []);
 
     const handleNameChange = (e) => {
         setName(e.target.value)

@@ -1,40 +1,15 @@
-import { useState, useEffect } from "react";
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
-import styles from './ItemListContainer.module.css'; // Cambia la importación
-import { db } from "../../services/firebase/firebaseConfig";
-import { getDocs, collection, query, where } from "firebase/firestore"
+import styles from './ItemListContainer.module.css';
+import { getProducts } from '../../services/firebase/firestore/products';
+import { useAsync } from '../../hooks/useAsync';
+import { useTitle } from '../../hooks/useTitle'
 
 const ItemListContainer = ({ greeting }) => {
-    const [loading, setLoading] = useState(true);
-    const [products, setProducts] = useState([]);
-
     const { categoryId } = useParams();
-
-    useEffect(() => {
-        setLoading(true)
-
-        const productsCollection = categoryId
-            ? query(collection(db, 'products'), where('category', '==', categoryId))
-            : collection(db, 'products')
-
-        getDocs(productsCollection)
-            .then(querySnapshot => {
-                const productsAdapted = querySnapshot.docs.map(doc => {
-                    const fields = doc.data()
-                    return { id: doc.id, ...fields }
-                })
-
-                setProducts(productsAdapted)
-            })
-            .catch(error => {
-                showNotification('error', 'Hubo un error')
-            })
-            .finally(() => {
-                setLoading(false)
-            })
-
-    }, [categoryId])
+    useTitle(categoryId, `ComicShop | ${categoryId}`, [categoryId]);
+    const asyncFunction = () => getProducts(categoryId)
+    const { data: products, error, loading } = useAsync(asyncFunction, [categoryId])
 
     if (loading) {
         return (
@@ -42,6 +17,10 @@ const ItemListContainer = ({ greeting }) => {
                 <h1 className={styles.loadingText}>Cargando Comics... 😊</h1>
             </div>
         );
+    }
+
+    if (error) {
+        return <h1 className={styles.loadingText}>Hubo un error al cargar los productos</h1>
     }
 
     return (

@@ -1,6 +1,7 @@
 .loadingContainer {
     text-align: center;
-    margin-top: 70px;
+    margin: 1rem auto;
+
 }
 
 .loadingText {

@@ -3,9 +3,11 @@ import { useCart } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
 import styles from './CartView.module.css';
 import CartItem from '../CartItem/CartItem';
+import { useTitle } from '../../hooks/useTitle';
 
 const CartView = () => {
     const { cart, clearCart, totalQuantity, totalPrice } = useCart();
+    useTitle(cart, 'ComicShop | Carrito', [cart]);
 
     if (totalQuantity === 0) {
         return (

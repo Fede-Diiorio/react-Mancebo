@@ -1,48 +1,31 @@
-import { useEffect, useState } from 'react'
-import { db } from '../../services/firebase/firebaseConfig'
-import { doc, getDoc } from 'firebase/firestore'
+
 import { useNotification } from '../../notification/NotificationService'
 import { Link } from 'react-router-dom'
 import styles from './OrderView.module.css'
+import { orderData } from '../../services/firebase/firestore/order'
+import { useAsync } from '../../hooks/useAsync'
+import { useTitle } from '../../hooks/useTitle'
 
 const OrderView = ({ orderSnapshot }) => {
-    const [buyer, setBuyer] = useState(null)
-    const [item, setItem] = useState(null)
-    const [total, setTotal] = useState(null)
-    const { showNotification } = useNotification()
-    const [orderId, setOrderId] = useState(null)
+    useTitle(true, `ComicShop | Orden de Compra`, []);
+    const asyncFunction = () => orderData(orderSnapshot)
+    const { data, loading, error } = useAsync(asyncFunction, [orderSnapshot])
+    const { buyer, item, total } = data
 
-    useEffect(() => {
-        const orderId = orderSnapshot.id
-        setOrderId(orderId)
+    if (loading) {
+        return <h1 className={styles.loadingText}>Generando comprobante...</h1>
+    }
 
-        const fetchData = async () => {
-            try {
-                const orderRef = doc(db, 'orders', orderId)
-                const orderDoc = await getDoc(orderRef)
-
-                if (orderDoc.exists()) {
-                    const orderData = orderDoc.data()
-                    setBuyer(orderData.buyer)
-                    setItem(orderData.item)
-                    setTotal(orderData.total)
-                } else {
-                    showNotification('error', 'La orden no existe')
-                }
-            } catch (error) {
-                showNotification('error', 'Error al obtener la información de la orden')
-            }
-        }
-
-        fetchData()
-    }, [orderSnapshot, showNotification])
+    if (error) {
+        return <h1 className={styles.loadingText}>Hubo un error al generar la orden</h1>
+    }
 
     return (
         <div className={styles.background}>
             <div className={styles.container}>
                 <h2>¡Gracias por comprar con nosotros!</h2>
                 <p className={styles.order}>
-                    el ID de su compra es: <strong>{orderId}</strong>
+                    el ID de su compra es: <strong>{data.id}</strong>
                 </p>
                 <div className={styles.data}>
                     {buyer && (

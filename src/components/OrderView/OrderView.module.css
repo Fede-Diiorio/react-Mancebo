@@ -38,3 +38,8 @@
     background-color: #217559;
     border: 1px solid #3fdba7;
 }
+
+.loadingText {
+    text-align: center;
+    margin: 1rem auto;
+}

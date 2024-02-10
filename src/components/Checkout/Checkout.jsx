@@ -65,7 +65,7 @@ const Checkout = () => {
     }
 
     if (loading) {
-        return <h2>Se está generando su orden...</h2>
+        return <h2 className={style.containerCheckout}>Se está generando su orden...</h2>
     }
 
     if (orderSnapshot) {
