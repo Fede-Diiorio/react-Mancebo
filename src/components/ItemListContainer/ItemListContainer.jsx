@@ -11,21 +11,6 @@ const ItemListContainer = ({ greeting }) => {
 
     const { categoryId } = useParams();
 
-    // useEffect(() => {
-    //     const asyncFunction = categoryId ? getProductsByCategory : getProducts;
-
-    //     asyncFunction(categoryId)
-    //         .then(products => {
-    //             setProducts(products);
-    //         })
-    //         .catch(error => {
-    //             console.error(error);
-    //         })
-    //         .finally(() => {
-    //             setLoading(false);
-    //         });
-    // }, [categoryId]);
-
     useEffect(() => {
         setLoading(true)
 

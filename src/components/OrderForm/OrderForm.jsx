@@ -44,7 +44,7 @@ const OrderForm = ({ onCreate }) => {
 
 
     return (
-        <form className='form'>
+        <form className='form' onSubmit={handleSubmit}>
             <legend>Complete los campos para generar la orden</legend>
             <div className='fromCampo'>
                 <label>Nombre:</label>

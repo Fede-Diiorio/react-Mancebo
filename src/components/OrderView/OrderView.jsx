@@ -38,14 +38,14 @@ const OrderView = ({ orderSnapshot }) => {
 
     return (
         <div className="container">
-            <div className={classes.container}>
+            <div className="container">
                 <h2>¡Gracias por comprar con nosotros!</h2>
-                <p className={classes.order}>
+                <p className="order">
                     el ID de su compra es: <strong>{orderId}</strong>
                 </p>
-                <div className={classes.item}>
+                <div className="item">
                     {buyer && (
-                        <div className={classes.buyer}>
+                        <div className="buyer">
                             <h3>Datos del Comprador:</h3>
                             <p>Nombre: {buyer.name}</p>
                             <p>Teléfono: {buyer.phone}</p>
@@ -53,7 +53,7 @@ const OrderView = ({ orderSnapshot }) => {
                         </div>
                     )}
                     {item && (
-                        <div className={classes.item}>
+                        <div className="item">
                             <h3>Detalles de la Compra:</h3>
                             <ul>
                                 {item.map((product) => (
@@ -61,7 +61,7 @@ const OrderView = ({ orderSnapshot }) => {
                                         Producto: {product.name}, Cantidad: {product.quantity}
                                     </li>
                                 ))}
-                                {total && <p className={classes.total}>Total de la compra: ${total}</p>}
+                                {total && <p className="total">Total de la compra: ${total}</p>}
 
                             </ul>
                         </div>

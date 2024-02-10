@@ -13,9 +13,11 @@ const ItemDetail = ({ id, name, img, category, price, description, stock }) => {
             id,
             name,
             quantity,
-            price
+            price,
+            img
         };
         addItem(objProductToAdd)
+        console.log(objProductToAdd)
         showNotification('success', `Agregado ${quantity} de ${name}`)
     };
 
