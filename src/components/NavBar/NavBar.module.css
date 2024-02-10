@@ -17,29 +17,33 @@ body {
     margin: 0 auto;
 }
 
+.link {
+    text-decoration: none;
+}
+
 .navbar h1 {
     margin: 0;
     font-family: 'Arial', sans-serif;
     font-size: 24px;
-    text-decoration: underline;
+    color: #3fdba7;
+    margin: 0 15px;
+    padding: 5px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
 }
 
-.nav-links a {
+.navLinks a {
     color: #3fdba7;
     text-decoration: none;
     margin: 0 15px;
     padding: 5px;
     border-radius: 5px;
-    transition: background-color 0.3s;
-    /* Transición suave al pasar el ratón */
+    transition: all 0.3s ease-in-out;
 }
 
-.nav-links a:hover {
+.navLinks a:hover,
+.navbar h1:hover {
     background-color: #f31a50;
-    /* Cambia el color de fondo al pasar el ratón */
 }
 
-.navbar .nav-h1 {
-    color: #3fdba7;
-    text-decoration: none;
-}
+.navbar .navH11 {}

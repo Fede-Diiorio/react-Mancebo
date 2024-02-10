@@ -1,16 +1,17 @@
+import React from 'react';
 import logo from '../../assets/logocart.png';
-import { useCart } from '../../context/CartContext'
+import { useCart } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
-import './CartWidget.css'
+import styles from './CartWidget.module.css';
+
 
 const CartWidget = () => {
-
-    const { totalQuantity } = useCart()
+    const { totalQuantity } = useCart();
 
     return (
-        <Link to={'/cart'} className='linkCartWidget'>
-            <div className='cartWidget'>
-                <img src={logo} alt="Cart Logo" style={{ width: '75%', height: '75%' }} />
+        <Link to="/cart" className={styles.linkCartWidget}>
+            <div className={styles.cartWidget}>
+                <img src={logo} alt="Cart Logo" />
                 <p>{totalQuantity}</p>
             </div>
         </Link>

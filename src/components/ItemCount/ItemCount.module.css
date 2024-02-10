@@ -1,10 +1,9 @@
-
-.item-count-container {
+.itemCountContainer {
     display: flex;
 }
 
-.count-button,
-.add-to-cart-button {
+.countButton,
+.addToCartButton {
     margin: 5px;
     padding: 6px 12px;
     font-size: 16px;
@@ -15,8 +14,8 @@
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-.count-button:hover,
-.add-to-cart-button:hover {
+.countButton:hover,
+.addToCartButton:hover {
     background-color: #333;
     color: #4ff454;
     border-color: #333;

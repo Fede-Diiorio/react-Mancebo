@@ -5,7 +5,7 @@ import { collection, getDocs, where, query, documentId, writeBatch, addDoc } fro
 import { useCart } from '../../context/CartContext'
 import { useNotification } from '../../notification/NotificationService'
 import { useState } from 'react'
-import './Checkout.css'
+import style from './Checkout.module.css'
 
 const Checkout = () => {
 
@@ -73,7 +73,7 @@ const Checkout = () => {
     }
 
     return (
-        <section className="containerCheckout">
+        <section className={style.containerCheckout}>
             <h2>Checkout</h2>
             <OrderForm onCreate={createOrder} />
         </section>

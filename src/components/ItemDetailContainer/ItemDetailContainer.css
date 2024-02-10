@@ -1,5 +1,9 @@
-/* ItemDetailContainer.css */
-
 .item-detail-container {
-    margin-top: 20px; /* Ajusta la distancia desde la parte superior */
+    max-width: 70%;
+    margin: 0 auto;
+    border: none;
+}
+
+.item-detail-container h1 {
+    text-align: center;
 }

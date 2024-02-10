@@ -1,9 +1,9 @@
-.loading-container {
+.loadingContainer {
     text-align: center;
     margin-top: 70px;
 }
 
-.loading-text {
+.loadingText {
     font-family: 'Arial', sans-serif;
     font-size: 28px;
 }
@@ -11,4 +11,5 @@
 .container {
     max-width: 80%;
     margin: 0 auto;
+    text-align: center;
 }

@@ -1,12 +1,11 @@
 import ItemCount from '../ItemCount/ItemCount';
-import './ItemDetail.css';
+import styles from './ItemDetail.module.css';
 import { useCart } from '../../context/CartContext';
 import { useNotification } from '../../notification/NotificationService';
 
 const ItemDetail = ({ id, name, img, category, price, description, stock }) => {
-
-    const { addItem, getProductQuantity } = useCart()
-    const { showNotification } = useNotification()
+    const { addItem, getProductQuantity } = useCart();
+    const { showNotification } = useNotification();
 
     const handleOnAdd = (quantity) => {
         const objProductToAdd = {
@@ -16,26 +15,25 @@ const ItemDetail = ({ id, name, img, category, price, description, stock }) => {
             price,
             img
         };
-        addItem(objProductToAdd)
-        console.log(objProductToAdd)
-        showNotification('success', `Agregado ${quantity} de ${name}`)
+        addItem(objProductToAdd);
+        console.log(objProductToAdd);
+        showNotification('success', `Agregado ${quantity} de ${name}`);
     };
 
-    const productQuantity = getProductQuantity(id)
+    const productQuantity = getProductQuantity(id);
 
     return (
-        <article className="item-detail-container">
-            <h3 className="highlighted-text">{name}</h3>
-            <img src={img} alt={name} className="item-image" />
-            <p>Categoria: {category}</p>
-            <h4>U$s{price}</h4>
-            <p>Descripcion: {description}</p>
-            {
+        <article className={styles.itemDetailContainer}>
+            <img src={img} alt={name} className={styles.itemImage} />
+            <div className={styles.itemDetailInfo}>
+                <h3 className={styles.highlightedText}>{name}</h3>
+                <p><strong>Categoria: </strong>{category}</p>
+                <p><strong>Precio: </strong>U$s {price}</p>
+                <p><strong>Descripcion: </strong>{description}</p>
                 <ItemCount stock={stock} onAdd={handleOnAdd} initial={productQuantity} />
-            }
+            </div>
         </article>
     );
-}
+};
 
 export default ItemDetail;
-

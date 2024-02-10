@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
-import './ItemListContainer.css';
+import styles from './ItemListContainer.module.css'; // Cambia la importación
 import { db } from "../../services/firebase/firebaseConfig";
 import { getDocs, collection, query, where } from "firebase/firestore"
 
@@ -38,14 +38,14 @@ const ItemListContainer = ({ greeting }) => {
 
     if (loading) {
         return (
-            <div className="loading-container">
-                <h1 className="loading-text">Cargando Comics... 😊</h1>
+            <div className={styles.loadingContainer}>
+                <h1 className={styles.loadingText}>Cargando Comics... 😊</h1>
             </div>
         );
     }
 
     return (
-        <div className="container">
+        <div className={styles.container}>
             <h1>{greeting}</h1>
             <ItemList products={products} />
         </div>
