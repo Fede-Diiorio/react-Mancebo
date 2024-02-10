@@ -14,10 +14,6 @@ export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([])
     const { showNotification } = useNotification()
 
-    useEffect(() => {
-        setCart(cartFromLocalStorage)
-    }, [])
-
     const addItem = (productToAdd) => {
         if (!isInCart(productToAdd.id)) {
             setCart(prev => [...prev, productToAdd])

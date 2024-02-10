@@ -1,0 +1,17 @@
+.linkCartWidget {
+    text-decoration: none;
+}
+
+.cartWidget {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cartWidget p {
+    color: #3fdba7;
+
+}

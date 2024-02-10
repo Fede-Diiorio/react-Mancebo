@@ -1,9 +1,10 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import ItemCount from '../ItemCount/ItemCount';
 import './ItemDetail.css';
+import { useCart } from '../../context/CartContext';
 
-const ItemDetail = ({ id, name, img, category, price, description, stock, setCart }) => {
+const ItemDetail = ({ id, name, img, category, price, description, stock }) => {
+
+    const { addItem, getProductQuantity } = useCart()
 
     const handleOnAdd = (quantity) => {
         const objProductToAdd = {
@@ -12,11 +13,10 @@ const ItemDetail = ({ id, name, img, category, price, description, stock, setCar
             quantity,
             price
         };
-        console.log('Agregado correctamente:', objProductToAdd);
-        
-        // Utiliza setCart para agregar objProductToAdd al carrito
-        setCart(prev => [...prev, objProductToAdd]);
+        addItem(objProductToAdd)
     };
+
+    const productQuantity = getProductQuantity(id)
 
     return (
         <article className="item-detail-container">
@@ -25,8 +25,9 @@ const ItemDetail = ({ id, name, img, category, price, description, stock, setCar
             <p>Categoria: {category}</p>
             <h4>U$s{price}</h4>
             <p>Descripcion: {description}</p>
-            {/* Pasa la función handleOnAdd como prop a ItemCount */}
-            <ItemCount stock={stock} onAdd={handleOnAdd} />
+            {
+                <ItemCount stock={stock} onAdd={handleOnAdd} initial={productQuantity} />
+            }
         </article>
     );
 }
