@@ -50,7 +50,6 @@ const Checkout = () => {
 
                 const orderCollection = collection(db, 'orders')
                 const orderSnapshot = await addDoc(orderCollection, objOrder)
-                console.log(orderSnapshot)
 
                 setOrderSnapshot(orderSnapshot)
                 clearCart()

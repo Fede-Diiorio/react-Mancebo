@@ -16,7 +16,6 @@ const ItemDetail = ({ id, name, img, category, price, description, stock }) => {
             img
         };
         addItem(objProductToAdd);
-        console.log(objProductToAdd);
         showNotification('success', `Agregado ${quantity} de ${name}`);
     };
 

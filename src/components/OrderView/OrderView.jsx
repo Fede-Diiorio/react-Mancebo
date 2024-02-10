@@ -1,5 +1,3 @@
-
-import { useNotification } from '../../notification/NotificationService'
 import { Link } from 'react-router-dom'
 import styles from './OrderView.module.css'
 import { orderData } from '../../services/firebase/firestore/order'
@@ -28,28 +26,27 @@ const OrderView = ({ orderSnapshot }) => {
                     el ID de su compra es: <strong>{data.id}</strong>
                 </p>
                 <div className={styles.data}>
-                    {buyer && (
-                        <div className={styles.buyer}>
-                            <h3>Datos del Comprador:</h3>
-                            <p>Nombre: {buyer.name}</p>
-                            <p>Teléfono: {buyer.phone}</p>
-                            <p>Email: {buyer.email}</p>
-                        </div>
-                    )}
-                    {item && (
-                        <div className={styles.item}>
-                            <h3>Detalles de la Compra:</h3>
-                            <ul>
-                                {item.map((product) => (
-                                    <li key={product.id}>
-                                        Producto: {product.name}, Cantidad: {product.quantity}
-                                    </li>
-                                ))}
-                                {total && <p className={styles.total}>Total de la compra: U$s {total}</p>}
 
-                            </ul>
-                        </div>
-                    )}
+                    <div className={styles.buyer}>
+                        <h3>Datos del Comprador:</h3>
+                        <p>Nombre: {buyer.name}</p>
+                        <p>Teléfono: {buyer.phone}</p>
+                        <p>Email: {buyer.email}</p>
+                    </div>
+
+                    <div className={styles.item}>
+                        <h3>Detalles de la Compra:</h3>
+                        <ul>
+                            {item.map((product) => (
+                                <li key={product.id}>
+                                    Producto: {product.name}, Cantidad: {product.quantity}
+                                </li>
+                            ))}
+                            <p className={styles.total}>Total de la compra: U$s {total}</p>
+
+                        </ul>
+                    </div>
+
                 </div>
                 <p>Pronto nos comunicaremos con usted</p>
                 <Link to={'/'}><button className={styles.button}>Volver al inicio</button></Link>
