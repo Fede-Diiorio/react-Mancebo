@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNotification } from '../../notification/NotificationService'
+import styles from './OrderForm.module.css';
 
 const OrderForm = ({ onCreate }) => {
 
@@ -8,7 +9,6 @@ const OrderForm = ({ onCreate }) => {
     const [email, setEmail] = useState('')
     const { showNotification } = useNotification()
     const [formSubmitted, setFormSubmitted] = useState(false)
-
 
     const handleNameChange = (e) => {
         setName(e.target.value)
@@ -41,29 +41,29 @@ const OrderForm = ({ onCreate }) => {
         onCreate(userData)
     }
 
-
-
     return (
-        <form className='form' onSubmit={handleSubmit}>
-            <legend>Complete los campos para generar la orden</legend>
-            <div className='fromCampo'>
-                <label>Nombre:</label>
-                <input type="text" placeholder="Tu Nombre" value={name} onChange={handleNameChange} />
-            </div>
+        <div className={styles.container}>
+            <form className={styles.form} onSubmit={handleSubmit}>
+                <legend>Complete los campos para generar la orden</legend>
+                <div className={styles.formCampo}>
+                    <label>Nombre:</label>
+                    <input type="text" placeholder="Tu Nombre" value={name} onChange={handleNameChange} />
+                </div>
 
-            <div className='fromCampo'>
-                <label>Teléfono:</label>
-                <input type="tel" pattern="[0-9]*" placeholder="Tu Teléfono" value={phone} onChange={handlePhoneChange} />
-            </div>
+                <div className={styles.formCampo}>
+                    <label>Teléfono:</label>
+                    <input type="tel" pattern="[0-9]*" placeholder="Tu Teléfono" value={phone} onChange={handlePhoneChange} />
+                </div>
 
-            <div className='fromCampo'>
-                <label>E-mail:</label>
-                <input type="email" placeholder="Tu E-mail" value={email} onChange={handleEmailChange} />
-            </div>
+                <div className={styles.formCampo}>
+                    <label>E-mail:</label>
+                    <input type="email" placeholder="Tu E-mail" value={email} onChange={handleEmailChange} />
+                </div>
 
-            <input type="submit" value='Generar Orden' />
-        </form>
+                <input className={styles.button} type="submit" value='Generar Orden' />
+            </form>
+        </div>
     )
 }
 
-export default OrderForm
+export default OrderForm;
