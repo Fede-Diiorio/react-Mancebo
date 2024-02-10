@@ -12,7 +12,7 @@ const CartView = () => {
             <section className={styles.cartViewContainer}>
                 <h2>Su carrito está vacío</h2>
                 <Link to={'/'}>
-                    <button>Volver</button>
+                    <button className={styles.button}>Volver</button>
                 </Link>
             </section>
         );
@@ -25,14 +25,13 @@ const CartView = () => {
                 <CartItem key={prod.id} {...prod} />
             ))}
             <div className={styles.cartViewInfo}>
-                <button onClick={clearCart}>Vaciar Carrito</button>
+                <button onClick={clearCart} className={styles.button}>Vaciar Carrito</button>
                 <Link to={'/checkout'}>
-                    <button>Checkout</button>
+                    <button className={styles.button}>Checkout</button>
                 </Link>
-                <h4>
-                    <strong>Total: </strong>
-                    {totalPrice}
-                </h4>
+                <p>
+                    <strong>Total: </strong>U$s {totalPrice}
+                </p>
             </div>
         </section>
     );
