@@ -17,9 +17,13 @@ const CartView = () => {
     return (
         <section className="cartViewContainer">
             <h2>Carrito de Compras</h2>
-            <div>
-                {cart.map(prod => <CartItem key={prod.id} {...prod} />)}
+            {cart.map(prod => <CartItem key={prod.id} {...prod} />)}
+            <div className="cartViewInfo">
+                <button onClick={clearCart}>Vaciar Carrito</button>
+                <Link to={'/checkout'}><button>Checkout</button></Link>
+                <h4><strong>Total: </strong>{totalPrice}</h4>
             </div>
+
         </section>
     )
 }

@@ -1,10 +1,12 @@
 import ItemCount from '../ItemCount/ItemCount';
 import './ItemDetail.css';
 import { useCart } from '../../context/CartContext';
+import { useNotification } from '../../notification/NotificationService';
 
 const ItemDetail = ({ id, name, img, category, price, description, stock }) => {
 
     const { addItem, getProductQuantity } = useCart()
+    const { showNotification } = useNotification()
 
     const handleOnAdd = (quantity) => {
         const objProductToAdd = {
@@ -14,6 +16,7 @@ const ItemDetail = ({ id, name, img, category, price, description, stock }) => {
             price
         };
         addItem(objProductToAdd)
+        showNotification('success', `Agregado ${quantity} de ${name}`)
     };
 
     const productQuantity = getProductQuantity(id)
