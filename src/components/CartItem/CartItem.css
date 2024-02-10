@@ -1,0 +1,14 @@
+.cartItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    border: 1px solid gray;
+    margin-bottom: 1rem;
+    padding: 0 2rem;
+}
+
+.cartItem h3 {
+    min-width: 300px;
+    text-align: start;
+}

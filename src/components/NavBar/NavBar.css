@@ -4,15 +4,18 @@ body {
 }
 
 .navbar {
+    background-color: #333;
+}
+
+.navbarContainer {
+    color: #3fdba7;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
-    color: #3fdba7;
-    padding: 10px 20px;
-    width: 98%;
+    width: 70%;
+    margin: 0 auto;
 }
-
 
 .navbar h1 {
     margin: 0;
