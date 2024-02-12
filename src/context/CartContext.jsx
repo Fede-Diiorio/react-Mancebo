@@ -31,6 +31,7 @@ export const CartProvider = ({ children }) => {
                 }
             })
             setCart(cartUpdate)
+            
         }
     }
 

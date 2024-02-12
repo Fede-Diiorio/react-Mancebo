@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Item.module.css';
 
-const Item = ({ id, name, img, price, stock }) => {
+const Item = ({ id, name, img, price, stock}) => {
     return (
         <article className={styles.item}>
             <h3>{name}</h3>
